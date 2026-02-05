@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{#
+  CONTACT PAGE (contact.html)
+  ===========================
+  
+  Contact information and inquiry form:
+    - Contact methods (email, phone, LinkedIn)
+    - Contact form (mailto: action)
+    - Areas of collaboration
+    - Resume download
+  
+  Data sources:
+    - data.email, data.phone, data.linkedin, data.location
+#}
+
+{% block title %}Contact - {{ data.name }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <span class="page-tag">Get in Touch</span>
+        <h1>Let's <span class="highlight">Connect</span></h1>
+        <p class="page-description">Open to opportunities in healthcare consulting, hospital planning, and operational excellence</p>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     CONTACT SECTION
+     - Two-column layout: Info (left) + Form (right)
+     - Contact methods link to appropriate actions
+     ========================================================================== -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            
+            <!-- Left Column: Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p class="contact-intro">Whether you're looking for expertise in healthcare facility planning, operational readiness consulting, or quality improvement initiatives, I'm here to help.</p>
+                
+                <!-- Contact Methods -->
+                <div class="contact-methods">
+                    <!-- Email -->
+                    <a href="mailto:{{ data.email }}" class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">Email</span>
+                            <span class="method-value">{{ data.email }}</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Phone -->
+                    <a href="tel:{{ data.phone.replace(' ', '').replace('+91', '+91-') }}" class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">Phone</span>
+                            <span class="method-value">{{ data.phone }}</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Location -->
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">Location</span>
+                            <span class="method-value">{{ data.location }}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- LinkedIn -->
+                    <a href="{{ data.linkedin }}" target="_blank" rel="noopener" class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">LinkedIn</span>
+                            <span class="method-value">linkedin.com/in/pallavirkamath</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Availability Note -->
+                <div class="availability-note">
+                    <i class="fas fa-clock"></i>
+                    <p>Available for consulting opportunities, collaborations, and professional networking.</p>
+                </div>
+            </div>
+            
+            <!-- Right Column: Contact Form -->
+            <div class="contact-form-container">
+                <h2>Send a Message</h2>
+                
+                <!-- 
+                     Contact Form
+                     Note: Uses mailto: action which opens user's email client
+                     For production, consider using a form backend service like:
+                     - Formspree (formspree.io)
+                     - Netlify Forms
+                     - EmailJS
+                -->
+                <form class="contact-form" action="mailto:{{ data.email }}" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="How can I help you?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     COLLABORATION AREAS
+     - Grid of service areas
+     - Static content describing expertise areas
+     ========================================================================== -->
+<section class="collaboration-section">
+    <div class="container">
+        <h2 class="section-title text-center">Areas of Collaboration</h2>
+        
+        <div class="collab-grid">
+            <div class="collab-card">
+                <i class="fas fa-hospital-alt"></i>
+                <h3>Hospital Planning</h3>
+                <p>Pre-operational planning, facility design, and operational readiness for healthcare establishments</p>
+            </div>
+            <div class="collab-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Process Improvement</h3>
+                <p>DMAIC-based quality initiatives, workflow optimization, and efficiency enhancement</p>
+            </div>
+            <div class="collab-card">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>SOP Development</h3>
+                <p>Standard Operating Procedures, compliance frameworks, and regulatory adherence</p>
+            </div>
+            <div class="collab-card">
+                <i class="fas fa-truck-loading"></i>
+                <h3>Supply Chain</h3>
+                <p>Healthcare supply chain optimization, procurement protocols, and inventory management</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     RESUME DOWNLOAD
+     - CTA for downloading resume PDF
+     ========================================================================== -->
+<section class="resume-section">
+    <div class="container">
+        <div class="resume-card">
+            <div class="resume-content">
+                <i class="fas fa-file-pdf"></i>
+                <h2>Download Resume</h2>
+                <p>Get a comprehensive overview of my professional journey, skills, and achievements.</p>
+                <a href="{{ url_for('static', filename='Pallavi_R_Kamath_Resume.pdf') }}" class="btn btn-outline" download>
+                    Download PDF <i class="fas fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

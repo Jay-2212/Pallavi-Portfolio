@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+  BASE TEMPLATE
+  =============
+  
+  This is the base layout template that all other pages extend.
+  It includes:
+    - Head section with meta tags, fonts, and styles
+    - Fixed navigation bar (responsive)
+    - Main content block (to be filled by child templates)
+    - Footer with contact info
+  
+  Usage:
+    {% extends "base.html" %}
+    {% block content %}
+      <!-- Your page content here -->
+    {% endblock %}
+-->
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Pallavi R. Kamath - Healthcare Management Professional specializing in pre-operational planning and quality excellence.">
+    <meta name="author" content="Pallavi R. Kamath">
+    
+    <!-- Dynamic Page Title -->
+    <title>{% block title %}{{ data.name }}{% endblock %} | Healthcare Management Professional</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Google Fonts: Inter (body) and Playfair Display (headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Extra CSS block for page-specific styles -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- ==========================================================================
+         NAVIGATION BAR
+         - Fixed position at top
+         - Responsive: Hamburger menu on mobile
+         - Highlights active page
+         - Smooth hide/show on scroll (controlled by JS)
+         ========================================================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo / Brand Name -->
+            <a href="{{ url_for('index') }}" class="nav-logo">
+                <span class="logo-text">PRK</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li>
+                    <a href="{{ url_for('index') }}" 
+                       class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">
+                       Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('experience') }}" 
+                       class="nav-link {% if request.endpoint == 'experience' %}active{% endif %}">
+                       Experience
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('education') }}" 
+                       class="nav-link {% if request.endpoint == 'education' %}active{% endif %}">
+                       Education
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('contact') }}" 
+                       class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">
+                       Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         MAIN CONTENT
+         - This block is filled by child templates
+         - Each page extends base.html and provides content here
+         ========================================================================== -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         - Contact info and social links
+         - Copyright notice
+         - Visible on all pages
+         ========================================================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Brand/Name -->
+                <div class="footer-brand">
+                    <h3>{{ data.name }}</h3>
+                    <p>{{ data.title }}</p>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="footer-social">
+                    <a href="{{ data.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:{{ data.email }}" aria-label="Send Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 {{ data.name }}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Extra JS block for page-specific scripts -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

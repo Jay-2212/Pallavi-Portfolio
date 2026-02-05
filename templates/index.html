@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{#
+  HOME PAGE (index.html)
+  =====================
+  
+  The main landing page featuring:
+    - Hero section with intro, stats, and photo placeholder
+    - About section with 3 expertise cards
+    - Skills grid (3 categories)
+    - Featured national award
+    - Certifications
+    - Quick contact CTA
+  
+  Data source: portfolio_data dictionary from app.py
+#}
+
+{% block content %}
+<!-- ==========================================================================
+     HERO SECTION
+     - Full viewport height introduction
+     - Key statistics (95% efficiency, ₹2.6L savings, 6+ years)
+     - Call-to-action buttons
+     - Photo placeholder (to be replaced with actual photo)
+     ========================================================================== -->
+<section class="hero">
+    <div class="hero-container">
+        <!-- Left Column: Text Content -->
+        <div class="hero-content">
+            <!-- Award Badge - Prominent display of national recognition -->
+            <div class="hero-badge">
+                <i class="fas fa-award"></i>
+                <span>QualTech National Award Winner</span>
+            </div>
+            
+            <!-- Main Heading -->
+            <h1 class="hero-title">
+                <span class="greeting">Hello, I'm</span>
+                <span class="name">{{ data.name }}</span>
+            </h1>
+            
+            <!-- Professional Title -->
+            <p class="hero-subtitle">{{ data.title }}</p>
+            
+            <!-- Summary/Description -->
+            <p class="hero-description">{{ data.summary.replace('\n', ' ') }}</p>
+            
+            <!-- Call-to-Action Buttons -->
+            <div class="hero-actions">
+                <a href="{{ url_for('experience') }}" class="btn btn-primary">
+                    View Experience <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="mailto:{{ data.email }}" class="btn btn-outline">
+                    Get in Touch <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <!-- Key Statistics -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">95%</span>
+                    <span class="stat-label">Efficiency Improvement</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">₹2.6L</span>
+                    <span class="stat-label">Annual Cost Savings</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">6+</span>
+                    <span class="stat-label">Years Leadership Experience</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Photo / Visual -->
+        <div class="hero-visual">
+            <div class="profile-card">
+                <!-- PHOTO PLACEHOLDER
+                     TODO: Replace this placeholder div with actual photo
+                     See AGENTS.md section "Add Photos" for instructions -->
+                <div class="profile-image-placeholder">
+                    <i class="fas fa-user"></i>
+                    <span>Photo Coming Soon</span>
+                </div>
+                
+                <!-- Certification Badge -->
+                <div class="profile-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Lean Six Sigma Yellow Belt</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Down Indicator -->
+    <div class="hero-scroll">
+        <a href="#about" aria-label="Scroll to about section">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     ABOUT SECTION
+     - Three expertise cards highlighting core competencies
+     - Facility Planning, Process Improvement, Team Leadership
+     ========================================================================== -->
+<section class="about" id="about">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <span class="section-tag">About Me</span>
+            <h2>Healthcare Operations &<br>Quality Excellence</h2>
+        </div>
+        
+        <!-- Expertise Cards Grid -->
+        <div class="about-grid">
+            <!-- Card 1: Facility Planning -->
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3>Facility Planning</h3>
+                <p>End-to-end operational framework design for healthcare facilities, from staffing models to compliance protocols.</p>
+            </div>
+            
+            <!-- Card 2: Process Improvement -->
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Process Improvement</h3>
+                <p>DMAIC methodology expert delivering measurable results: 95% reduction in inefficiencies and significant cost savings.</p>
+            </div>
+            
+            <!-- Card 3: Team Leadership -->
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Team Leadership</h3>
+                <p>Proven track record managing cross-functional teams of 15+ and delivering projects with budgets up to ₹1.8 lakhs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     SKILLS SECTION
+     - 3-column grid of skill categories
+     - Data from portfolio_data['skills']
+     ========================================================================== -->
+<section class="skills-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Expertise</span>
+            <h2>Core Competencies</h2>
+        </div>
+        
+        <!-- Skills Grid - Iterates over skill categories -->
+        <div class="skills-grid">
+            {% for category, skills in data.skills.items() %}
+            <div class="skill-category">
+                <h3>{{ category }}</h3>
+                <ul class="skill-list">
+                    {% for skill in skills %}
+                    <li><i class="fas fa-check-circle"></i> {{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     FEATURED AWARD SECTION
+     - Prominent display of the QualTech National Award
+     - Uses the first item from portfolio_data['awards']
+     - Dark background for visual emphasis
+     ========================================================================== -->
+<section class="award-featured">
+    <div class="container">
+        <div class="award-card">
+            <div class="award-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="award-content">
+                <span class="award-tag">National Recognition</span>
+                <h3>{{ data.awards[0].title }}</h3>
+                <p>{{ data.awards[0].description }}</p>
+                <div class="award-meta">
+                    <span><i class="fas fa-building"></i> {{ data.awards[0].organization }}</span>
+                    <span><i class="fas fa-calendar"></i> {{ data.awards[0].date }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     CERTIFICATIONS SECTION
+     - Grid of certification cards
+     - Data from portfolio_data['certifications']
+     ========================================================================== -->
+<section class="certifications">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Credentials</span>
+            <h2>Certifications</h2>
+        </div>
+        
+        <div class="cert-grid">
+            {% for cert in data.certifications %}
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h4>{{ cert.name }}</h4>
+                <p>{{ cert.issuer }}</p>
+                <span class="cert-date">{{ cert.date }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     QUICK CONTACT SECTION
+     - Call-to-action for collaboration
+     - Links to full contact page
+     ========================================================================== -->
+<section class="quick-contact">
+    <div class="container">
+        <div class="quick-contact-content">
+            <h2>Let's Collaborate</h2>
+            <p>Looking for expertise in healthcare facility planning, operational readiness, or quality improvement initiatives?</p>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">
+                Connect With Me <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

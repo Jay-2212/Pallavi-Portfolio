@@ -22,7 +22,9 @@
             <div class="profile-image-wrapper">
                 <img src="{{ url_for('static', filename=data.hero.main_image) }}" 
                      alt="Dr. Pallavi R. Kamath" 
-                     class="profile-image">
+                     class="profile-image"
+                     loading="eager"
+                     fetchpriority="high">
                 <div class="image-accent"></div>
             </div>
         </div>
@@ -129,7 +131,8 @@
             <div class="timeline-stage">
                 <div class="stage-image">
                     <img src="{{ url_for('static', filename=stage.image) }}" 
-                         alt="{{ stage.role }}">
+                         alt="{{ stage.role }}"
+                         loading="lazy">
                 </div>
                 <div class="stage-content">
                     <span class="stage-year">{{ stage.year }}</span>
@@ -147,8 +150,9 @@
                 {% for image in data.vso_journey.gallery %}
                 <div class="photo-item">
                     <img src="{{ url_for('static', filename=image) }}" 
-                         alt="VSO Journey" 
-                         loading="lazy">
+                         alt="VSO Journey - {{ loop.index }}" 
+                         loading="lazy"
+                         decoding="async">
                 </div>
                 {% endfor %}
             </div>
@@ -447,6 +451,13 @@
     transform: scale(1.05);
 }
 
+/* Performance: Smooth image loading */
+.profile-image,
+.stage-image img,
+.photo-item img {
+    will-change: transform;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .hero-container {
@@ -454,8 +465,20 @@
         text-align: center;
     }
     
+    .hero-visual {
+        order: -1;
+    }
+    
+    .profile-image-wrapper {
+        max-width: 350px;
+    }
+    
     .hero-title {
         font-size: 36px;
+    }
+    
+    .hero-story {
+        font-size: 16px;
     }
     
     .alignment-grid {
@@ -468,16 +491,45 @@
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding: 100px 20px 60px;
+    }
+    
     .hero-title {
-        font-size: 32px;
+        font-size: 28px;
+    }
+    
+    .hero-greeting {
+        font-size: 16px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
     }
     
     .timeline-horizontal {
         grid-template-columns: 1fr;
+        gap: 32px;
     }
     
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .section-title {
+        font-size: 28px;
     }
 }
 </style>

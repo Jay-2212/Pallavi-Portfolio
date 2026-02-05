@@ -136,37 +136,67 @@ portfolio_data = {
                 "year": "2019",
                 "role": "Volunteer",
                 "description": "Started with 300+ hours of service, community development, and educational outreach",
-                "image": "images/vso/AISelect_20260205_224049_Instagram.png"
+                "image": "images/vso/AISelect_20260205_224049_Instagram.jpg"
             },
             {
                 "year": "2020-2021",
                 "role": "Logistics Coordinator",
                 "description": "Coordinated logistics for 15-20 volunteer projects, building systematic planning capabilities",
-                "image": "images/vso/AISelect_20260205_224141_Instagram.png"
+                "image": "images/vso/AISelect_20260205_224141_Instagram.jpg"
             },
             {
                 "year": "2020-2022",
                 "role": "Operations Coordinator",
                 "description": "Managed day-to-day operations and established frameworks for organizational efficiency",
-                "image": "images/vso/AISelect_20260205_224202_Instagram.png"
+                "image": "images/vso/AISelect_20260205_224202_Instagram.jpg"
             },
             {
                 "year": "2022-2023",
                 "role": "Student Ambassador",
                 "description": "Led India's largest student volunteer organization, mobilizing 700+ volunteers nationally",
-                "image": "images/vso/AISelect_20260205_224315_Instagram.png"
+                "image": "images/vso/AISelect_20260205_224315_Instagram.jpg"
             }
         ],
         "gallery": [
-            "images/vso/AISelect_20260205_224049_Instagram.png",
-            "images/vso/AISelect_20260205_224141_Instagram.png",
-            "images/vso/AISelect_20260205_224202_Instagram.png",
-            "images/vso/AISelect_20260205_224232_Instagram.png",
-            "images/vso/AISelect_20260205_224315_Instagram.png",
-            "images/vso/AISelect_20260205_224401_Instagram.png",
-            "images/vso/AISelect_20260205_224412_Instagram.png",
-            "images/vso/AISelect_20260205_224449_Instagram.png"
+            "images/vso/AISelect_20260205_224049_Instagram.jpg",
+            "images/vso/AISelect_20260205_224141_Instagram.jpg",
+            "images/vso/AISelect_20260205_224202_Instagram.jpg",
+            "images/vso/AISelect_20260205_224232_Instagram.jpg",
+            "images/vso/AISelect_20260205_224315_Instagram.jpg",
+            "images/vso/AISelect_20260205_224401_Instagram.jpg",
+            "images/vso/AISelect_20260205_224412_Instagram.jpg",
+            "images/vso/AISelect_20260205_224449_Instagram.jpg"
         ]
+    },
+    
+    # -------------------------------------------------------------------------
+    # HOSPICE & PALLIATIVE CARE PASSION
+    # For Phase 3: Content expansion showing elderly care alignment with Praan
+    # -------------------------------------------------------------------------
+    "palliative_care": {
+        "title": "My Work in Palliative & Elder Care",
+        "subtitle": "Finding purpose in supporting aging with dignity",
+        "story": """At Manipal Hospice and Respite Centre, I discovered the profound intersection of healthcare 
+        operations and human compassion. Working on pre-operational planning for a 35-bed clinical block 
+        within a 100-bed palliative care facility, I witnessed firsthand how thoughtful operational design 
+        directly impacts the dignity and comfort of elderly patients and their families.""",
+        "highlights": [
+            {
+                "title": "End-of-Life Care Operations",
+                "description": "Designed SOPs for patient admission pathways, ensuring smooth transitions for elderly patients from tertiary care to hospice"
+            },
+            {
+                "title": "Multi-Stakeholder Coordination",
+                "description": "Established death documentation framework coordinating hospice, district authorities, and families with sensitivity"
+            },
+            {
+                "title": "Dignity in Operations",
+                "description": "Streamlined supply chains and logistics to ensure consistent availability of clinical materials for patient comfort"
+            }
+        ],
+        "connection_to_praan": """Just as Praan Health gives aging parents a second chance at health through continuous care, 
+        palliative care gives them dignity in their final chapters. Both require the same core values I hold dear: 
+        empathy, operational excellence, and unwavering respect for the elderly."""
     },
     
     # -------------------------------------------------------------------------

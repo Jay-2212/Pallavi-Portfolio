@@ -29,7 +29,8 @@ DEPLOYMENT:
     Set FLASK_ENV=production for production deployments.
 """
 
-from flask import Flask, render_template, request
+import os
+from flask import Flask, render_template, request, send_from_directory
 
 # =============================================================================
 # FLASK APPLICATION INITIALIZATION
@@ -339,6 +340,37 @@ def contact():
         - Resume download CTA
     """
     return render_template('contact.html', data=portfolio_data)
+
+
+# =============================================================================
+# STATIC FILES & FAVICON
+# =============================================================================
+
+@app.route('/favicon.ico')
+def favicon():
+    """
+    Serve favicon.ico
+    Browsers automatically request this for bookmarks/tabs.
+    """
+    return send_from_directory(
+        os.path.join(app.root_path, 'static'),
+        'favicon.svg',
+        mimetype='image/svg+xml'
+    )
+
+
+@app.route('/apple-touch-icon.png')
+def apple_touch_icon():
+    """
+    Serve apple-touch-icon.png
+    iOS devices request this when users add site to home screen.
+    Falls back to favicon.svg if PNG not available.
+    """
+    return send_from_directory(
+        os.path.join(app.root_path, 'static'),
+        'favicon.svg',
+        mimetype='image/svg+xml'
+    )
 
 
 # =============================================================================

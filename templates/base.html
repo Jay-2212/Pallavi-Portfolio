@@ -10,11 +10,11 @@
     - Main content block (to be filled by child templates)
     - Footer with contact info
   
-  Usage:
-    {% extends "base.html" %}
-    {% block content %}
-      <!-- Your page content here -->
-    {% endblock %}
+  Usage in child templates:
+    [% extends "base.html" %]  (Use { instead of [)
+    [% block content %]
+      Your page content here
+    [% endblock %]  (Use { instead of [)
 -->
 <html lang="en">
 <head>

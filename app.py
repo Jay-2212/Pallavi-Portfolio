@@ -77,9 +77,100 @@ portfolio_data = {
     "linkedin": "https://www.linkedin.com/in/pallavirkamath",
     
     # -------------------------------------------------------------------------
-    # PROFESSIONAL SUMMARY
-    # Used in: Hero section of homepage
-    # Note: Keep concise (2-3 sentences) for optimal display
+    # HERO SECTION - EMPATHETIC NARRATIVE
+    # This speaks to the HEART of who Pallavi is - for Praan Health
+    # -------------------------------------------------------------------------
+    "hero": {
+        "greeting": "Hello, I'm Pallavi",
+        "tagline": "I believe healthcare is about human connection",
+        "story": """An occupational therapist at heart, I discovered my calling through 300+ hours of volunteering 
+        with children and people with disabilities. From those moments of genuine connection—helping a child 
+        take their first independent step, sitting with families through their hardest days—I learned that 
+        true care lives in empathy, not just protocols. Today, I bring this human-centered approach to 
+        healthcare operations, because our parents deserve care that honors their dignity, their stories, 
+        and their hope for healthier years ahead.""",
+        "main_image": "images/pallavi-main.jpg"
+    },
+    
+    # -------------------------------------------------------------------------
+    # WHY PRAAN - VALUES ALIGNMENT
+    # Explicitly connecting Pallavi's journey to Praan Health's mission
+    # -------------------------------------------------------------------------
+    "why_praan": {
+        "headline": "Why I'm Drawn to Praan Health",
+        "quote": """"To give every parent in India a second chance at health." This mission speaks to everything 
+        I believe about healthcare.""",
+        "connections": [
+            {
+                "praan_value": "Empathy & Emotional Intelligence",
+                "pallavi_story": "Working with children with disabilities taught me that care lives in emotions—fear, hope, dignity. I've sat with families during their most vulnerable moments."
+            },
+            {
+                "praan_value": "Extreme Ownership",
+                "pallavi_story": "As Student Ambassador of India's largest student volunteer organization, I led 700+ volunteers and launched 8-10 new projects from scratch."
+            },
+            {
+                "praan_value": "Mission-First, Ego-Light",
+                "pallavi_story": "I started as a volunteer and grew through service. From day-one volunteer to campus leader—it's never been about titles, but about impact."
+            },
+            {
+                "praan_value": "Builder Mentality",
+                "pallavi_story": "Designed operational frameworks for a 35-bed palliative care facility and a national conference with 700+ volunteers—built from 0→1."
+            }
+        ]
+    },
+    
+    # -------------------------------------------------------------------------
+    # VSO JOURNEY - VISUAL STORYTELLING
+    # The transformative journey that shaped Pallavi
+    # -------------------------------------------------------------------------
+    "vso_journey": {
+        "title": "My Journey of Discovery",
+        "subtitle": "Through volunteering, I found my purpose",
+        "story": """Volunteer Service Organization (VSO) wasn't just an organization I joined—it was where I discovered 
+        who I am. Starting as a volunteer in 2019, I accumulated 300+ hours working with communities, children, 
+        and people with disabilities. Each interaction taught me empathy, resilience, and the profound impact of 
+        simply showing up with care.""",
+        "stages": [
+            {
+                "year": "2019",
+                "role": "Volunteer",
+                "description": "Started with 300+ hours of service, community development, and educational outreach",
+                "image": "images/vso/AISelect_20260205_224049_Instagram.png"
+            },
+            {
+                "year": "2020-2021",
+                "role": "Logistics Coordinator",
+                "description": "Coordinated logistics for 15-20 volunteer projects, building systematic planning capabilities",
+                "image": "images/vso/AISelect_20260205_224141_Instagram.png"
+            },
+            {
+                "year": "2020-2022",
+                "role": "Operations Coordinator",
+                "description": "Managed day-to-day operations and established frameworks for organizational efficiency",
+                "image": "images/vso/AISelect_20260205_224202_Instagram.png"
+            },
+            {
+                "year": "2022-2023",
+                "role": "Student Ambassador",
+                "description": "Led India's largest student volunteer organization, mobilizing 700+ volunteers nationally",
+                "image": "images/vso/AISelect_20260205_224315_Instagram.png"
+            }
+        ],
+        "gallery": [
+            "images/vso/AISelect_20260205_224049_Instagram.png",
+            "images/vso/AISelect_20260205_224141_Instagram.png",
+            "images/vso/AISelect_20260205_224202_Instagram.png",
+            "images/vso/AISelect_20260205_224232_Instagram.png",
+            "images/vso/AISelect_20260205_224315_Instagram.png",
+            "images/vso/AISelect_20260205_224401_Instagram.png",
+            "images/vso/AISelect_20260205_224412_Instagram.png",
+            "images/vso/AISelect_20260205_224449_Instagram.png"
+        ]
+    },
+    
+    # -------------------------------------------------------------------------
+    # PROFESSIONAL SUMMARY (Legacy - for Experience page)
     # -------------------------------------------------------------------------
     "summary": """Master of Hospital Administration candidate with clinical foundation and proven track record 
     in healthcare facility planning and operational excellence. Designed end-to-end operational framework 

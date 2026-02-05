@@ -29,7 +29,7 @@ DEPLOYMENT:
     Set FLASK_ENV=production for production deployments.
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # =============================================================================
 # FLASK APPLICATION INITIALIZATION

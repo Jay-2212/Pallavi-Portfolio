@@ -124,23 +124,29 @@ portfolio_data = {
             {
                 "id": "hospice",
                 "phase": "Purpose",
-                "years": "2025 - Present",
-                "title": "Finding Meaning in End-of-Life Care",
+                "years": "June 2024 - Present",
+                "title": "Building End-of-Life Care from the Ground Up",
                 "organization": "Manipal Hospice and Respite Centre",
-                "story": """Working at the Hospice has been the most profound chapter of my journey so far. Here, I've witnessed 
-                how thoughtful operations can preserve dignity in life's final chapters. Pre-operational planning for 
-                a 35-bed palliative care facility taught me that healthcare isn't just about curing - it's about caring, 
-                comforting, and honoring the whole person. From designing patient admission pathways to establishing 
-                compassionate death documentation frameworks, I've learned that every operational detail affects a 
-                family's experience of loss and remembrance. This work has crystalized my belief that everyone deserves 
-                to age and transition with dignity.""",
+                "story": """I joined the Hospice at its very inception - before the first patient arrived, before the systems were 
+                in place, when it was just a vision of dignified end-of-life care. Being there from day one has been 
+                the most profound experience of my career. I've had the privilege of literally building the operational 
+                foundation of a place that will provide comfort to countless families. From conducting mock drills to 
+                ensure patient safety, to designing workflows that honor both medical necessity and human dignity, 
+                to navigating government liaisons for death certificates - every task has taught me that operational 
+                excellence in healthcare is an act of love. This is where I learned that the best way to serve is to 
+                build systems that allow compassion to flow seamlessly.""",
                 "key_moments": [
-                    "Led pre-operational planning for 35-bed clinical block in 100-bed palliative care facility",
-                    "Designed SOPs for patient admission from 2,000-bed tertiary hospital",
-                    "Established multi-stakeholder death documentation framework",
-                    "Streamlined supply chain for consistent clinical material availability",
-                    "Coordinated cross-functional teams across clinical and non-clinical departments"
-                ]
+                    "Joined at inception - part of the founding operational team",
+                    "Conducted pre-operational mock drills to ensure patient safety readiness",
+                    "Designed comprehensive SOPs for patient admission pathways from 2,000-bed tertiary hospital",
+                    "Created workflows and operational frameworks for 35-bed clinical block",
+                    "Liaised with government authorities to establish death certificate approval processes",
+                    "Built supply chain systems ensuring consistent availability of clinical materials",
+                    "Coordinated cross-functional teams across clinical and non-clinical departments",
+                    "Established multi-stakeholder documentation frameworks ensuring regulatory compliance"
+                ],
+                "impact": "Part of the team that brought a 100-bed palliative care vision to operational reality",
+                "aerial_image": "images/hospice-aerial.jpg"
             }
         ]
     },

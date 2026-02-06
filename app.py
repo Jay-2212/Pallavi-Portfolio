@@ -113,6 +113,8 @@ portfolio_data = {
                     "Student Secretary for SVASTH 2025 national conference (250+ participants)",
                     "Coordinator for Manipal Health Literacy Unit"
                 ],
+                "aerial_image": "images/hospice-aerial.jpg",
+                "impact": "Part of the team that brought a 100-bed palliative care vision to operational reality",
                 "achievements": [
                     {
                         "title": "National Winner - QualTech Prize",
@@ -146,8 +148,7 @@ portfolio_data = {
                     "Coordinated cross-functional teams across clinical and non-clinical departments",
                     "Established multi-stakeholder documentation frameworks ensuring regulatory compliance"
                 ],
-                "impact": "Part of the team that brought a 100-bed palliative care vision to operational reality",
-                "aerial_image": "images/hospice-aerial.jpg"
+                "team_image": "images/hospice-team.jpg"
             }
         ]
     },

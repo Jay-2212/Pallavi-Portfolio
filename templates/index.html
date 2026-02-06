@@ -136,7 +136,7 @@
                         {% endif %}
                     </div>
                     
-                    {% if section.id == "hospice" and section.aerial_image %}
+                    {% if section.aerial_image %}
                     <div class="phase-aerial">
                         <div class="aerial-image-wrapper">
                             <img src="{{ url_for('static', filename=section.aerial_image) }}" 
@@ -145,6 +145,18 @@
                             <div class="aerial-caption">
                                 <i class="fas fa-hospital"></i>
                                 <span>{{ section.impact }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% elif section.team_image %}
+                    <div class="phase-aerial">
+                        <div class="aerial-image-wrapper">
+                            <img src="{{ url_for('static', filename=section.team_image) }}" 
+                                 alt="{{ section.title }} - Team" 
+                                 loading="lazy">
+                            <div class="aerial-caption">
+                                <i class="fas fa-heart"></i>
+                                <span>Building connections that matter</span>
                             </div>
                         </div>
                     </div>

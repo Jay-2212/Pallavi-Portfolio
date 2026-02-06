@@ -264,7 +264,7 @@ function injectAnimationStyles() {
 
 /**
  * Initialize contact form validation
- * Validates email format before submission
+ * Validates input and composes a mail draft on submit
  * 
  * @function initFormValidation
  */
@@ -272,31 +272,52 @@ function initFormValidation() {
     const contactForm = document.querySelector('.contact-form');
     
     if (!contactForm) return;
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    const recipientEmail = contactForm.dataset.recipient || '';
+
+    if (!nameInput || !emailInput || !subjectInput || !messageInput || !recipientEmail) {
+        return;
+    }
+
+    // Email validation regex pattern
+    // Matches: text@domain.tld
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     contactForm.addEventListener('submit', function(e) {
-        const emailInput = document.getElementById('email');
-        
-        if (!emailInput) return;
-        
-        const email = emailInput.value;
-        
-        // Email validation regex pattern
-        // Matches: text@domain.tld
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        e.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+
+        const email = emailInput.value.trim();
         
         if (!emailPattern.test(email)) {
-            e.preventDefault();  // Stop form submission
-            
             // Visual error indication
             emailInput.style.borderColor = '#ef4444';
             
             // Show error message
             showFieldError(emailInput, 'Please enter a valid email address');
-        } else {
-            // Clear any existing errors
-            emailInput.style.borderColor = '';
-            clearFieldError(emailInput);
+            return;
         }
+
+        // Clear any existing errors
+        emailInput.style.borderColor = '';
+        clearFieldError(emailInput);
+
+        const subject = encodeURIComponent(subjectInput.value.trim());
+        const body = encodeURIComponent(
+            `Name: ${nameInput.value.trim()}\n` +
+            `Email: ${email}\n\n` +
+            `${messageInput.value.trim()}`
+        );
+
+        window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
     });
 }
 

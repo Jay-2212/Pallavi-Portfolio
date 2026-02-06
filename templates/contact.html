@@ -99,13 +99,10 @@
                 
                 <!-- 
                      Contact Form
-                     Note: Uses mailto: action which opens user's email client
-                     For production, consider using a form backend service like:
-                     - Formspree (formspree.io)
-                     - Netlify Forms
-                     - EmailJS
+                     JS composes a mailto draft from form values.
+                     Keeps the UX simple while avoiding insecure form action warnings.
                 -->
-                <form class="contact-form" action="mailto:{{ data.email }}" method="post" enctype="text/plain">
+                <form class="contact-form" data-recipient="{{ data.email }}" novalidate>
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your name" required>

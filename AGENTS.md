@@ -48,7 +48,7 @@
 **What to modify**:
 ```python
 portfolio_data = {
-    "name": "Dr. Pallavi R. Kamath",  # Change name
+    "name": "Dr. Pallavi R. Kamath (OT)",  # Change name
     "email": "newemail@example.com",   # Update email
     "phone": "+91 9876543210",          # Update phone
     # ... etc
@@ -95,7 +95,7 @@ def newpage():
 <!-- WITH THIS -->
 <div class="profile-image">
     <img src="{{ url_for('static', filename='images/photo.jpg') }}" 
-         alt="Dr. Pallavi R. Kamath">
+         alt="Dr. Pallavi R. Kamath (OT)">
 </div>
 ```
 
@@ -270,4 +270,4 @@ If something is unclear:
 ---
 
 **Last Updated**: 2026-02-05  
-**Maintainer**: Pallavi R. Kamath
+**Maintainer**: Dr. Pallavi R. Kamath (OT)

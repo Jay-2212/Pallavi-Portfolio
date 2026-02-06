@@ -36,7 +36,7 @@ app = Flask(__name__)
 
 portfolio_data = {
     # Personal Information
-    "name": "Dr. Pallavi R. Kamath",
+    "name": "Dr. Pallavi R. Kamath (OT)",
     "title": "Healthcare Operations | Palliative Care Advocate | People-First Leader",
     "location": "Udupi, India",
     "email": "pallavirkamath06@gmail.com",
@@ -239,7 +239,83 @@ portfolio_data = {
         "title": "Let's Connect",
         "message": "I'm always open to conversations about healthcare, operations, volunteering, or how we can work together to make care more human-centered.",
         "button_text": "Get in Touch"
-    }
+    },
+    
+    # WORK EXPERIENCE - Professional Roles
+    "experience": [
+        {
+            "role": "Management Trainee",
+            "organization": "Manipal Hospice and Respite Centre",
+            "location": "Manipal",
+            "period": "June 2025 - Present",
+            "highlights": [
+                "Led pre-operational planning for 35-bed clinical block within 100-bed specialized palliative care facility, establishing staffing frameworks with nurse-to-patient ratios",
+                "Designed and developed Standard Operating Procedures for patient admission pathways from 2,000-bed tertiary care hospital, optimizing patient flow and reducing documentation errors through standardized protocols",
+                "Established multi-stakeholder death documentation framework coordinating between Hospice Center, District Statistical Officer, tertiary hospital, and state-level authorities to ensure regulatory compliance and seamless information flow",
+                "Streamlined supply chain processes between tertiary hospital and hospice facility, creating procurement protocols that eliminated operational bottlenecks and ensured consistent availability of clinical materials",
+                "Ensured operational readiness of 35-bed facility through comprehensive logistics planning, supply management, and cross-functional coordination across clinical and non-clinical departments"
+            ]
+        },
+        {
+            "role": "Pediatric Occupational Therapist",
+            "organization": "Anirvedha",
+            "location": "Mangalore",
+            "period": "February 2024 - June 2024",
+            "highlights": [
+                "Managed caseload of 8-10 pediatric clients, developing individualized care plans, tracking progress through systematic documentation, and adjusting interventions based on outcome measurements",
+                "Coordinated weekly stakeholder communications with parents, translating clinical data into actionable insights and collaborative care strategies that improved treatment adherence",
+                "Designed and executed weekly group therapy programs, managing resource planning, budget allocation, and logistics coordination for multi-participant sessions",
+                "Developed foundational expertise in patient-centered care delivery, clinical operations planning, and family engagement strategies in specialized healthcare settings"
+            ]
+        }
+    ],
+    
+    # LEADERSHIP & VOLUNTEER EXPERIENCE
+    "leadership": [
+        {
+            "role": "Student Secretary",
+            "organization": "SVASTH 2025 - Annual Student-Led Conference",
+            "period": "June - September 2025",
+            "description": "Served as Student Secretary for SVASTH 2025, Department of Healthcare and Hospital Management's flagship two-day national conference attracting 250+ students from across India. Led cross-functional team of 15 members through complete event lifecycle from conceptualization to execution, managing ₹1.8 lakh budget with full financial accountability. Coordinated speaker management, venue logistics, participant registration, and sponsor relations for multi-track conference featuring healthcare industry leaders and academic experts."
+        },
+        {
+            "role": "Coordinator",
+            "organization": "Manipal Health Literacy Unit",
+            "period": "November 2024 - Present",
+            "description": "Coordinate health literacy initiatives at Prasanna School of Public Health, organizing 7-8 national and international webinars targeting diverse audiences including policymakers, students, healthcare workers, and administrators. Manage end-to-end event operations including speaker coordination, platform management, promotional campaigns, and stakeholder engagement for virtual knowledge dissemination programs."
+        },
+        {
+            "role": "Campus Ambassador",
+            "organization": "Office of International Affairs and Collaboration - MAHE, Manipal",
+            "period": "July 2025 - Present",
+            "description": "Managed 20 international students during 11-day intensive summer program, coordinating academic sessions, cultural activities, and campus integration initiatives. Served as primary liaison between international participants and university administration, ensuring seamless program delivery and cross-cultural exchange. Co-organized Kairos 2025, integrating International Student Day with educational fair to facilitate cultural exchange across MAHE's diverse student community."
+        },
+        {
+            "role": "Student Ambassador (Operations Coordinator)",
+            "organization": "Volunteer Service Organization",
+            "period": "2019 - Present",
+            "description": "Progressed from volunteer to Operations Coordinator to Student Ambassador (campus-level principal representative) across four years, building competencies in project management, stakeholder coordination, and program execution. Served as Student Convener for National Conference on Youth in Social Change for two consecutive years (2022, 2023), mobilizing 700+ volunteers nationally each year through strategic coordination. Managed day-to-day operations across 15-20 concurrent community development initiatives, establishing systematic frameworks for project execution, resource allocation, and volunteer coordination. Represented MAHE at G20 University Connect Event (New Delhi, September 2023), demonstrating national-level stakeholder engagement capabilities."
+        }
+    ],
+    
+    # AWARDS & RECOGNITION
+    "awards": [
+        {
+            "title": "National Winner - QualTech® Prize Education",
+            "organization": "Qimpro Foundation",
+            "date": "September 2025",
+            "description": "First place among 200+ national submissions for process improvement solution achieving 95% reduction in plasma bag breakage and ₹2.6L annual cost savings through systematic DMAIC methodology."
+        },
+        {
+            "title": "Overall Cultural Programme Champions - OTCON",
+            "organization": "All India Occupational Therapy Association",
+            "date": "February 2023",
+            "description": "Led Team Manipal as event coordinator, managing logistics and team coordination across multiple events to secure overall championship."
+        }
+    ],
+    
+    # LANGUAGES
+    "languages": ["English", "Hindi", "Kannada", "Konkani"]
 }
 
 

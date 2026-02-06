@@ -117,7 +117,8 @@ portfolio_data = {
                     {
                         "title": "National Winner - QualTech Prize",
                         "org": "Qimpro Foundation",
-                        "desc": "First place among 200+ submissions. Reduced plasma bag breakage by 95%, saving ₹2.6L annually through DMAIC methodology."
+                        "desc": "First place among 200+ submissions. Reduced plasma bag breakage by 95%, saving ₹2.6L annually through DMAIC methodology.",
+                        "image": "images/Qimpro.jpg"
                     }
                 ]
             },

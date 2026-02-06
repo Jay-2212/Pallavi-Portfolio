@@ -7,7 +7,7 @@ to healthcare leadership - highlighting her empathy, initiative, and natural
 leadership that drives her to deliver care at scale.
 
 Pallavi's Journey:
-- VSO (2019-2023): Discovered her calling through 300+ hours of service
+- VSO (2019-2023): Discovered her calling through 600+ hours of service
 - MHA (2024-2026): Learning to deliver care at scale through operations
 - Hospice (2025-Present): Finding purpose in end-of-life dignity
 
@@ -47,7 +47,7 @@ portfolio_data = {
     "hero": {
         "greeting": "Hello, I'm Pallavi",
         "tagline": "I believe healthcare is about human connection",
-        "story": """An occupational therapist at heart, I discovered my purpose through 300+ hours of volunteering 
+        "story": """An occupational therapist at heart, I discovered my purpose through 600+ hours of volunteering 
         with children and communities in need. From teaching in village schools to organizing national volunteer 
         movements, I learned that true care lives in empathy, not just protocols. This journey led me to 
         healthcare operations - because I believe the best way to help more people is to build systems that 
@@ -56,7 +56,7 @@ portfolio_data = {
         every person deserves to be seen, heard, and cared for.""",
         "main_image": "images/pallavi-main.jpg",
         "stats": [
-            {"value": "300+", "label": "Volunteering Hours"},
+            {"value": "600+", "label": "Volunteering Hours"},
             {"value": "2500+", "label": "Volunteers Led"},
             {"value": "6", "label": "Years of Service"}
         ]
@@ -78,12 +78,12 @@ portfolio_data = {
                 of service taught me that leadership isn't about titles - it's about showing up, caring deeply, and 
                 inspiring others to do the same. From teaching children in village schools to coordinating logistics 
                 for 15+ projects, I grew from volunteer to Student Ambassador - leading India's largest student-run 
-                volunteer organization and mobilizing 700+ volunteers nationally.""",
+                volunteer organization and mobilizing 2500+ volunteers nationally.""",
                 "key_moments": [
-                    "Started as volunteer, accumulated 300+ service hours",
+                    "Started as volunteer, accumulated 600+ service hours",
                     "Coordinated logistics for 15-20 community projects",
                     "Led operations for campus-level initiatives",
-                    "Student Ambassador - principal representative for 700+ volunteers",
+                    "Student Ambassador - principal representative for 2500+ volunteers",
                     "Organized national conferences with 700+ participants"
                 ],
                 "images": [
@@ -171,7 +171,7 @@ portfolio_data = {
             {
                 "title": "Natural Leader",
                 "icon": "fa-users",
-                "description": "Leadership found me through service. Grew from volunteer to leading 700+ people - not because I sought titles, but because I cared about impact."
+                "description": "Leadership found me through service. Grew from volunteer to leading 2500+ people - not because I sought titles, but because I cared about impact."
             },
             {
                 "title": "Systems Thinker",
@@ -276,25 +276,41 @@ portfolio_data = {
             "role": "Student Secretary",
             "organization": "SVASTH 2025 - Annual Student-Led Conference",
             "period": "June - September 2025",
-            "description": "Served as Student Secretary for SVASTH 2025, Department of Healthcare and Hospital Management's flagship two-day national conference attracting 250+ students from across India. Led cross-functional team of 15 members through complete event lifecycle from conceptualization to execution, managing ₹1.8 lakh budget with full financial accountability. Coordinated speaker management, venue logistics, participant registration, and sponsor relations for multi-track conference featuring healthcare industry leaders and academic experts."
+            "description": [
+                "Served as Student Secretary for SVASTH 2025, Department of Healthcare and Hospital Management's flagship two-day national conference attracting 250+ students from across India",
+                "Led cross-functional team of 15 members through complete event lifecycle from conceptualization to execution, managing ₹1.8 lakh budget with full financial accountability",
+                "Coordinated speaker management, venue logistics, participant registration, and sponsor relations for multi-track conference featuring healthcare industry leaders and academic experts"
+            ]
         },
         {
             "role": "Coordinator",
             "organization": "Manipal Health Literacy Unit",
             "period": "November 2024 - Present",
-            "description": "Coordinate health literacy initiatives at Prasanna School of Public Health, organizing 7-8 national and international webinars targeting diverse audiences including policymakers, students, healthcare workers, and administrators. Manage end-to-end event operations including speaker coordination, platform management, promotional campaigns, and stakeholder engagement for virtual knowledge dissemination programs."
+            "description": [
+                "Coordinate health literacy initiatives at Prasanna School of Public Health, organizing 7-8 national and international webinars targeting diverse audiences",
+                "Manage end-to-end event operations including speaker coordination, platform management, promotional campaigns, and stakeholder engagement"
+            ]
         },
         {
             "role": "Campus Ambassador",
             "organization": "Office of International Affairs and Collaboration - MAHE, Manipal",
             "period": "July 2025 - Present",
-            "description": "Managed 20 international students during 11-day intensive summer program, coordinating academic sessions, cultural activities, and campus integration initiatives. Served as primary liaison between international participants and university administration, ensuring seamless program delivery and cross-cultural exchange. Co-organized Kairos 2025, integrating International Student Day with educational fair to facilitate cultural exchange across MAHE's diverse student community."
+            "description": [
+                "Managed 20 international students during 11-day intensive summer program, coordinating academic sessions, cultural activities, and campus integration initiatives",
+                "Served as primary liaison between international participants and university administration, ensuring seamless program delivery and cross-cultural exchange",
+                "Co-organized Kairos 2025, integrating International Student Day with educational fair to facilitate cultural exchange across MAHE's diverse student community"
+            ]
         },
         {
             "role": "Student Ambassador (Operations Coordinator)",
             "organization": "Volunteer Service Organization",
             "period": "2019 - Present",
-            "description": "Progressed from volunteer to Operations Coordinator to Student Ambassador (campus-level principal representative) across four years, building competencies in project management, stakeholder coordination, and program execution. Served as Student Convener for National Conference on Youth in Social Change for two consecutive years (2022, 2023), mobilizing 700+ volunteers nationally each year through strategic coordination. Managed day-to-day operations across 15-20 concurrent community development initiatives, establishing systematic frameworks for project execution, resource allocation, and volunteer coordination. Represented MAHE at G20 University Connect Event (New Delhi, September 2023), demonstrating national-level stakeholder engagement capabilities."
+            "description": [
+                "Progressed from volunteer to Operations Coordinator to Student Ambassador (campus-level principal representative) across four years",
+                "Served as Student Convener for National Conference on Youth in Social Change for two consecutive years (2022, 2023), mobilizing 2500+ volunteers nationally each year",
+                "Managed day-to-day operations across 15-20 concurrent community development initiatives, establishing systematic frameworks for project execution and resource allocation",
+                "Represented MAHE at G20 University Connect Event (New Delhi, September 2023), demonstrating national-level stakeholder engagement capabilities"
+            ]
         }
     ],
     

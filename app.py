@@ -57,7 +57,7 @@ portfolio_data = {
         "main_image": "images/pallavi-main.jpg",
         "stats": [
             {"value": "300+", "label": "Volunteering Hours"},
-            {"value": "700+", "label": "Volunteers Led"},
+            {"value": "2500+", "label": "Volunteers Led"},
             {"value": "6", "label": "Years of Service"}
         ]
     },

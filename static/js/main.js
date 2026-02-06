@@ -50,12 +50,22 @@ function initNavigation() {
     }
     
     /**
+     * Close mobile menu and reset accessibility state
+     */
+    function closeMenu() {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    /**
      * Toggle mobile menu open/closed state
      * Adds/removes 'active' class to both menu and toggle button
      */
     navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        this.classList.toggle('active');
+        const isOpen = navMenu.classList.toggle('active');
+        this.classList.toggle('active', isOpen);
+        this.setAttribute('aria-expanded', String(isOpen));
     });
     
     /**
@@ -64,8 +74,7 @@ function initNavigation() {
      */
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            closeMenu();
         });
     });
     
@@ -75,8 +84,7 @@ function initNavigation() {
      */
     document.addEventListener('click', function(e) {
         if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            closeMenu();
         }
     });
 }
@@ -345,13 +353,21 @@ function initActiveNavLink() {
     const navLinks = document.querySelectorAll('.nav-link');
     
     if (sections.length === 0 || navLinks.length === 0) return;
+
+    // Only run scroll-based highlighting when nav links target on-page sections.
+    // Current top-nav links are route URLs, so this avoids removing server-rendered active state.
+    const sectionNavLinks = Array.from(navLinks).filter(link => {
+        const href = link.getAttribute('href') || '';
+        return href.startsWith('#');
+    });
+
+    if (sectionNavLinks.length === 0) return;
     
     window.addEventListener('scroll', debounce(function() {
         let current = '';
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
             
             // Update current when section is in view (with 200px offset)
             if (window.pageYOffset >= sectionTop - 200) {
@@ -360,7 +376,7 @@ function initActiveNavLink() {
         });
         
         // Update active class on nav links
-        navLinks.forEach(link => {
+        sectionNavLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === '#' + current) {
                 link.classList.add('active');

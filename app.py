@@ -2,11 +2,20 @@
 Pallavi R. Kamath - Professional Portfolio Website
 ===================================================
 
-A Flask-based professional portfolio website showcasing healthcare management
-expertise, pre-operational planning, and quality excellence.
+A personal portfolio showcasing Pallavi's journey from hands-on volunteering 
+to healthcare leadership - highlighting her empathy, initiative, and natural 
+leadership that drives her to deliver care at scale.
 
-Author: Pallavi R. Kamath
-Contact: pallavirkamath06@gmail.com
+Pallavi's Journey:
+- VSO (2019-2023): Discovered her calling through 300+ hours of service
+- MHA (2024-2026): Learning to deliver care at scale through operations
+- Hospice (2025-Present): Finding purpose in end-of-life dignity
+
+Core Identity:
+- Empathetic caregiver who connects deeply with people
+- Natural leader who grew from volunteer to campus leader
+- Initiative-taker who launches projects and builds systems
+- Mission-driven professional seeking to reduce suffering through healthcare
 
 QUICK START:
     1. Create virtual environment: python3 -m venv venv
@@ -14,256 +23,188 @@ QUICK START:
     3. Install dependencies: pip install -r requirements.txt
     4. Run: python app.py
     5. Open: http://localhost:5000
-
-PROJECT STRUCTURE:
-    - app.py          : Main Flask application (this file)
-    - static/         : CSS, JS, images, and downloadable files
-    - templates/      : HTML templates using Jinja2
-
-MODIFYING CONTENT:
-    All portfolio data is centralized in the `portfolio_data` dictionary below.
-    Update that dictionary to change content across all pages.
-
-DEPLOYMENT:
-    The Procfile is configured for Heroku/Render deployment using gunicorn.
-    Set FLASK_ENV=production for production deployments.
 """
 
 import os
 from flask import Flask, render_template, request, send_from_directory
 
-# =============================================================================
-# FLASK APPLICATION INITIALIZATION
-# =============================================================================
-
-# Create Flask application instance
-# template_folder: Location of HTML templates (default: 'templates')
-# static_folder: Location of static assets (default: 'static')
 app = Flask(__name__)
 
-
 # =============================================================================
-# PORTFOLIO DATA CONFIGURATION
+# PORTFOLIO DATA - PALLAVI'S STORY
 # =============================================================================
-# 
-# This dictionary contains all content displayed on the website.
-# Modify values here to update content across all pages automatically.
-#
-# Structure:
-#   - name, title, location    : Basic personal information
-#   - contact details          : Email, phone, LinkedIn
-#   - summary                  : Professional summary (used in Hero section)
-#   - experience               : List of work experiences
-#   - education                : Academic qualifications
-#   - skills                   : Categorized skills dictionary
-#   - certifications           : Professional certifications
-#   - awards                   : Awards and recognitions
-#   - leadership               : Leadership roles and initiatives
-#   - languages                : Language proficiencies
 
 portfolio_data = {
-    # -------------------------------------------------------------------------
-    # PERSONAL INFORMATION
-    # -------------------------------------------------------------------------
+    # Personal Information
     "name": "Dr. Pallavi R. Kamath",
-    "title": "Healthcare Management | Pre-Operational Planning & Quality Excellence",
+    "title": "Healthcare Operations | Palliative Care Advocate | People-First Leader",
     "location": "Udupi, India",
-    
-    # -------------------------------------------------------------------------
-    # CONTACT INFORMATION
-    # -------------------------------------------------------------------------
     "email": "pallavirkamath06@gmail.com",
     "phone": "+91 8277113400",
     "linkedin": "https://www.linkedin.com/in/pallavirkamath",
     
-    # -------------------------------------------------------------------------
-    # HERO SECTION - EMPATHETIC NARRATIVE
-    # This speaks to the HEART of who Pallavi is - for Praan Health
-    # -------------------------------------------------------------------------
+    # HERO SECTION - Who Pallavi Is
     "hero": {
         "greeting": "Hello, I'm Pallavi",
         "tagline": "I believe healthcare is about human connection",
-        "story": """An occupational therapist at heart, I discovered my calling through 300+ hours of volunteering 
-        with children and people with disabilities. From those moments of genuine connection—helping a child 
-        take their first independent step, sitting with families through their hardest days—I learned that 
-        true care lives in empathy, not just protocols. Today, I bring this human-centered approach to 
-        healthcare operations, because our parents deserve care that honors their dignity, their stories, 
-        and their hope for healthier years ahead.""",
-        "main_image": "images/pallavi-main.jpg"
+        "story": """An occupational therapist at heart, I discovered my purpose through 300+ hours of volunteering 
+        with children and communities in need. From teaching in village schools to organizing national volunteer 
+        movements, I learned that true care lives in empathy, not just protocols. This journey led me to 
+        healthcare operations - because I believe the best way to help more people is to build systems that 
+        deliver care with dignity, compassion, and excellence. Whether it's a child's first step in therapy, 
+        a volunteer discovering their potential, or an elderly patient finding comfort in their final days - 
+        every person deserves to be seen, heard, and cared for.""",
+        "main_image": "images/pallavi-main.jpg",
+        "stats": [
+            {"value": "300+", "label": "Volunteering Hours"},
+            {"value": "700+", "label": "Volunteers Led"},
+            {"value": "6", "label": "Years of Service"}
+        ]
     },
     
-    # -------------------------------------------------------------------------
-    # WHY PRAAN - VALUES ALIGNMENT
-    # Explicitly connecting Pallavi's journey to Praan Health's mission
-    # -------------------------------------------------------------------------
-    "why_praan": {
-        "headline": "Why I'm Drawn to Praan Health",
-        "quote": """"To give every parent in India a second chance at health." This mission speaks to everything 
-        I believe about healthcare.""",
-        "connections": [
+    # MY JOURNEY - The Story Arc
+    "my_journey": {
+        "title": "My Journey of Purpose",
+        "subtitle": "From hands-on care to systems that scale",
+        "sections": [
             {
-                "praan_value": "Empathy & Emotional Intelligence",
-                "pallavi_story": "Working with children with disabilities taught me that care lives in emotions—fear, hope, dignity. I've sat with families during their most vulnerable moments."
+                "id": "vso",
+                "phase": "Discovery",
+                "years": "2019 - 2023",
+                "title": "Finding Myself Through Service",
+                "organization": "Volunteer Service Organization (VSO)",
+                "story": """I joined VSO as a volunteer in 2019, not knowing it would transform my life. Starting with 
+                community outreach and educational programs, I discovered my love for helping others. Over 300 hours 
+                of service taught me that leadership isn't about titles - it's about showing up, caring deeply, and 
+                inspiring others to do the same. From teaching children in village schools to coordinating logistics 
+                for 15+ projects, I grew from volunteer to Student Ambassador - leading India's largest student-run 
+                volunteer organization and mobilizing 700+ volunteers nationally.""",
+                "key_moments": [
+                    "Started as volunteer, accumulated 300+ service hours",
+                    "Coordinated logistics for 15-20 community projects",
+                    "Led operations for campus-level initiatives",
+                    "Student Ambassador - principal representative for 700+ volunteers",
+                    "Organized national conferences with 700+ participants"
+                ],
+                "images": [
+                    "images/vso/AISelect_20260205_224449_Instagram.jpg",  # With children - warmth
+                    "images/vso/AISelect_20260205_225531_Instagram.jpg",  # Team leadership
+                    "images/vso/AISelect_20260205_224315_Instagram.jpg",  # Village school
+                    "images/vso/AISelect_20260205_224510_Instagram.jpg",  # Playing with kids
+                    "images/vso/AISelect_20260205_224202_Instagram.jpg",  # Recognition
+                    "images/vso/AISelect_20260205_225600_Instagram.jpg",  # Old age home
+                ]
             },
             {
-                "praan_value": "Extreme Ownership",
-                "pallavi_story": "As Student Ambassador of India's largest student volunteer organization, I led 700+ volunteers and launched 8-10 new projects from scratch."
+                "id": "mha",
+                "phase": "Growth",
+                "years": "2024 - 2026",
+                "title": "Learning to Deliver Care at Scale",
+                "organization": "Master of Hospital Administration, MAHE Manipal",
+                "story": """My experiences in VSO showed me the gap between good intentions and systematic impact. 
+                I realized that to help more people, I needed to understand healthcare operations - how to build 
+                systems, manage resources, and create sustainable frameworks for care delivery. Pursuing my MHA 
+                was about amplifying my ability to serve. It's where I learned that operational excellence and 
+                human compassion aren't opposing forces - they work together to create dignified, accessible care.""",
+                "key_moments": [
+                    "8.03 CGPA - Academic excellence in healthcare management",
+                    "Thesis on Organizational Health Literacy in Hospitals",
+                    "Coursework: Quality Management, Healthcare Finance, HRM",
+                    "Student Secretary for SVASTH 2025 national conference (250+ participants)",
+                    "Coordinator for Manipal Health Literacy Unit"
+                ],
+                "achievements": [
+                    {
+                        "title": "National Winner - QualTech Prize",
+                        "org": "Qimpro Foundation",
+                        "desc": "First place among 200+ submissions. Reduced plasma bag breakage by 95%, saving ₹2.6L annually through DMAIC methodology."
+                    }
+                ]
             },
             {
-                "praan_value": "Mission-First, Ego-Light",
-                "pallavi_story": "I started as a volunteer and grew through service. From day-one volunteer to campus leader—it's never been about titles, but about impact."
-            },
-            {
-                "praan_value": "Builder Mentality",
-                "pallavi_story": "Designed operational frameworks for a 35-bed palliative care facility and a national conference with 700+ volunteers—built from 0→1."
+                "id": "hospice",
+                "phase": "Purpose",
+                "years": "2025 - Present",
+                "title": "Finding Meaning in End-of-Life Care",
+                "organization": "Manipal Hospice and Respite Centre",
+                "story": """Working at the Hospice has been the most profound chapter of my journey so far. Here, I've witnessed 
+                how thoughtful operations can preserve dignity in life's final chapters. Pre-operational planning for 
+                a 35-bed palliative care facility taught me that healthcare isn't just about curing - it's about caring, 
+                comforting, and honoring the whole person. From designing patient admission pathways to establishing 
+                compassionate death documentation frameworks, I've learned that every operational detail affects a 
+                family's experience of loss and remembrance. This work has crystalized my belief that everyone deserves 
+                to age and transition with dignity.""",
+                "key_moments": [
+                    "Led pre-operational planning for 35-bed clinical block in 100-bed palliative care facility",
+                    "Designed SOPs for patient admission from 2,000-bed tertiary hospital",
+                    "Established multi-stakeholder death documentation framework",
+                    "Streamlined supply chain for consistent clinical material availability",
+                    "Coordinated cross-functional teams across clinical and non-clinical departments"
+                ]
             }
         ]
     },
     
-    # -------------------------------------------------------------------------
-    # VSO JOURNEY - VISUAL STORYTELLING
-    # The transformative journey that shaped Pallavi
-    # -------------------------------------------------------------------------
-    "vso_journey": {
-        "title": "My Journey of Discovery",
-        "subtitle": "Through volunteering, I found my purpose",
-        "story": """Volunteer Service Organization (VSO) wasn't just an organization I joined—it was where I discovered 
-        who I am. Starting as a volunteer in 2019, I accumulated 300+ hours working with communities, children, 
-        and people with disabilities. Each interaction taught me empathy, resilience, and the profound impact of 
-        simply showing up with care.""",
-        "stages": [
+    # WHO I AM - Core Values
+    "who_i_am": {
+        "title": "Who I Am",
+        "subtitle": "The qualities that define my approach",
+        "qualities": [
             {
-                "year": "2019",
-                "role": "Volunteer",
-                "description": "Started with 300+ hours of service, community development, and educational outreach",
-                "image": "images/vso/AISelect_20260205_224049_Instagram.jpg"
+                "title": "Empathetic",
+                "icon": "fa-heart",
+                "description": "I don't just understand people's needs - I feel them. From children with disabilities to elderly patients, I connect on a human level."
             },
             {
-                "year": "2020-2021",
-                "role": "Logistics Coordinator",
-                "description": "Coordinated logistics for 15-20 volunteer projects, building systematic planning capabilities",
-                "image": "images/vso/AISelect_20260205_224141_Instagram.jpg"
+                "title": "Initiative-Taker",
+                "icon": "fa-rocket",
+                "description": "I see gaps and fill them. Launched 8-10 new projects at VSO, built operational frameworks from scratch, always asking 'how can we do better?'"
             },
             {
-                "year": "2020-2022",
-                "role": "Operations Coordinator",
-                "description": "Managed day-to-day operations and established frameworks for organizational efficiency",
-                "image": "images/vso/AISelect_20260205_224202_Instagram.jpg"
+                "title": "Natural Leader",
+                "icon": "fa-users",
+                "description": "Leadership found me through service. Grew from volunteer to leading 700+ people - not because I sought titles, but because I cared about impact."
             },
             {
-                "year": "2022-2023",
-                "role": "Student Ambassador",
-                "description": "Led India's largest student volunteer organization, mobilizing 700+ volunteers nationally",
-                "image": "images/vso/AISelect_20260205_224315_Instagram.jpg"
+                "title": "Systems Thinker",
+                "icon": "fa-project-diagram",
+                "description": "I see the big picture. From volunteer coordination to hospital operations, I build frameworks that amplify human effort."
             }
-        ],
-        "gallery": [
-            "images/vso/AISelect_20260205_224049_Instagram.jpg",
-            "images/vso/AISelect_20260205_224141_Instagram.jpg",
-            "images/vso/AISelect_20260205_224202_Instagram.jpg",
-            "images/vso/AISelect_20260205_224232_Instagram.jpg",
-            "images/vso/AISelect_20260205_224315_Instagram.jpg",
-            "images/vso/AISelect_20260205_224401_Instagram.jpg",
-            "images/vso/AISelect_20260205_224412_Instagram.jpg",
-            "images/vso/AISelect_20260205_224449_Instagram.jpg"
         ]
     },
     
-    # -------------------------------------------------------------------------
-    # HOSPICE & PALLIATIVE CARE PASSION
-    # For Phase 3: Content expansion showing elderly care alignment with Praan
-    # -------------------------------------------------------------------------
-    "palliative_care": {
-        "title": "My Work in Palliative & Elder Care",
-        "subtitle": "Finding purpose in supporting aging with dignity",
-        "story": """At Manipal Hospice and Respite Centre, I discovered the profound intersection of healthcare 
-        operations and human compassion. Working on pre-operational planning for a 35-bed clinical block 
-        within a 100-bed palliative care facility, I witnessed firsthand how thoughtful operational design 
-        directly impacts the dignity and comfort of elderly patients and their families.""",
-        "highlights": [
-            {
-                "title": "End-of-Life Care Operations",
-                "description": "Designed SOPs for patient admission pathways, ensuring smooth transitions for elderly patients from tertiary care to hospice"
-            },
-            {
-                "title": "Multi-Stakeholder Coordination",
-                "description": "Established death documentation framework coordinating hospice, district authorities, and families with sensitivity"
-            },
-            {
-                "title": "Dignity in Operations",
-                "description": "Streamlined supply chains and logistics to ensure consistent availability of clinical materials for patient comfort"
-            }
+    # PROFESSIONAL EXPERTISE
+    "skills": {
+        "Healthcare Operations": [
+            "Facility Planning & Pre-Operational Strategy",
+            "Process Improvement & Quality Assurance",
+            "Supply Chain Optimization",
+            "Standard Operating Procedures"
         ],
-        "connection_to_praan": """Just as Praan Health gives aging parents a second chance at health through continuous care, 
-        palliative care gives them dignity in their final chapters. Both require the same core values I hold dear: 
-        empathy, operational excellence, and unwavering respect for the elderly."""
+        "Leadership & Management": [
+            "Cross-Functional Team Leadership",
+            "Stakeholder Coordination",
+            "Event Management (700+ participants)",
+            "Volunteer Management & Engagement"
+        ],
+        "Healthcare Focus Areas": [
+            "Palliative & End-of-Life Care",
+            "Patient-Centered Care Design",
+            "Organizational Health Literacy",
+            "Community Health Programs"
+        ]
     },
     
-    # -------------------------------------------------------------------------
-    # PROFESSIONAL SUMMARY (Legacy - for Experience page)
-    # -------------------------------------------------------------------------
-    "summary": """Master of Hospital Administration candidate with clinical foundation and proven track record 
-    in healthcare facility planning and operational excellence. Designed end-to-end operational framework 
-    for 35-bed clinical block within 100-bed palliative care center. National award winner (Qimpro QualTech Prize) 
-    for process improvement initiative that reduced operational inefficiencies by 95% and delivered ₹2.6L 
-    annual cost savings. Six years of leadership experience coordinating multi-stakeholder initiatives 
-    and managing cross-functional teams.""",
-    
-    # -------------------------------------------------------------------------
-    # WORK EXPERIENCE
-    # Each experience item requires:
-    #   - role          : Job title
-    #   - organization  : Company/Institution name
-    #   - location      : Work location
-    #   - period        : Time period (e.g., "June 2025 - Present")
-    #   - highlights    : List of achievements/responsibilities
-    # -------------------------------------------------------------------------
-    "experience": [
-        {
-            "role": "Management Trainee",
-            "organization": "Manipal Hospice and Respite Centre",
-            "location": "Manipal",
-            "period": "June 2025 - Present",
-            "highlights": [
-                "Led pre-operational planning for 35-bed clinical block within 100-bed specialized palliative care facility",
-                "Designed SOPs for patient admission pathways from 2,000-bed tertiary care hospital",
-                "Established multi-stakeholder death documentation framework ensuring regulatory compliance",
-                "Streamlined supply chain processes, eliminating operational bottlenecks",
-                "Ensured operational readiness through comprehensive logistics planning"
-            ]
-        },
-        {
-            "role": "Pediatric Occupational Therapist",
-            "organization": "Anir vedha",
-            "location": "Mangalore",
-            "period": "February 2024 - June 2024",
-            "highlights": [
-                "Managed caseload of 8-10 pediatric clients with individualized care plans",
-                "Coordinated weekly stakeholder communications, improving treatment adherence",
-                "Designed and executed weekly group therapy programs with budget allocation",
-                "Developed expertise in patient-centered care and clinical operations planning"
-            ]
-        }
-    ],
-    
-    # -------------------------------------------------------------------------
     # EDUCATION
-    # Each education item requires:
-    #   - degree        : Degree/certification name
-    #   - institution   : School/University name
-    #   - period        : Duration of study
-    #   - score         : GPA/Percentage (optional but recommended)
-    #   - details       : List of additional details (thesis, coursework, etc.)
-    # -------------------------------------------------------------------------
     "education": [
         {
             "degree": "Master of Hospital Administration (MHA)",
             "institution": "Prasanna School of Public Health, MAHE, Manipal",
-            "period": "August 2024 - May 2026 (Expected)",
+            "period": "2024 - 2026 (Expected)",
             "score": "8.03 CGPA",
             "details": [
-                "Thesis: Exploring Organizational Health Literacy Among Administrative Stakeholders in Hospitals",
-                "Coursework: Quality Management, Organizational Behaviour, Healthcare Finance, Biostatistics, HRM"
+                "Thesis: Organizational Health Literacy Among Administrative Stakeholders in Hospitals",
+                "Coursework: Quality Management, Healthcare Finance, Biostatistics, HRM"
             ]
         },
         {
@@ -272,194 +213,53 @@ portfolio_data = {
             "period": "2019 - 2024",
             "score": "7.80 CGPA",
             "details": [
-                "Clinical foundation in patient care and rehabilitation",
-                "Healthcare operations and patient management expertise"
+                "Clinical foundation in patient rehabilitation",
+                "Experience with pediatric and disability care"
             ]
         }
     ],
     
-    # -------------------------------------------------------------------------
-    # SKILLS
-    # Organized by categories. Keys are category names, values are lists of skills.
-    # Displayed on homepage in a 3-column grid layout.
-    # -------------------------------------------------------------------------
-    "skills": {
-        "Strategic Operations Management": [
-            "Healthcare Facility Planning",
-            "Pre-Operational Strategy", 
-            "Cross-Functional Team Leadership",
-            "Stakeholder Coordination"
-        ],
-        "Process Excellence & Compliance": [
-            "Quality Assurance Systems",
-            "Standard Operating Procedures",
-            "Regulatory Compliance",
-            "Supply Chain Optimization",
-            "DMAIC Methodology"
-        ],
-        "Project & Financial Management": [
-            "Budget Management",
-            "Resource Allocation",
-            "Data-Driven Decision Making",
-            "Process Implementation"
-        ]
-    },
-    
-    # -------------------------------------------------------------------------
     # CERTIFICATIONS
-    # Displayed on both homepage and education page
-    # -------------------------------------------------------------------------
     "certifications": [
-        {
-            "name": "Lean Six Sigma - Yellow Belt",
-            "issuer": "Anexas Group",
-            "date": "August 2025"
-        },
-        {
-            "name": "Supply Chain and Logistics Specialization",
-            "issuer": "Coursera",
-            "date": "October 2025"
-        },
-        {
-            "name": "Systematic Review and Meta-Analysis Workshop",
-            "issuer": "MAHE - DHR TRC",
-            "date": "December 2025"
-        }
+        {"name": "Lean Six Sigma - Yellow Belt", "issuer": "Anexas Group", "date": "2025"},
+        {"name": "Supply Chain and Logistics", "issuer": "Coursera", "date": "2025"},
+        {"name": "Systematic Review Workshop", "issuer": "MAHE - DHR TRC", "date": "2025"}
     ],
     
-    # -------------------------------------------------------------------------
-    # AWARDS
-    # First award (index 0) is featured prominently on homepage
-    # All awards displayed on experience page
-    # -------------------------------------------------------------------------
-    "awards": [
-        {
-            "title": "National Winner - QualTech® Prize",
-            "organization": "Qimpro Foundation",
-            "date": "September 2025",
-            "description": "First place among 200+ national submissions for process improvement solution achieving 95% reduction in plasma bag breakage and ₹2.6L annual cost savings through DMAIC methodology."
-        },
-        {
-            "title": "Overall Cultural Programme Champions",
-            "organization": "OTCON - All India Occupational Therapy Association",
-            "date": "February 2023",
-            "description": "Led Team Manipal as event coordinator, managing logistics and team coordination to secure overall championship."
-        }
-    ],
-    
-    # -------------------------------------------------------------------------
-    # LEADERSHIP ROLES
-    # Displayed on experience page in a grid layout
-    # -------------------------------------------------------------------------
-    "leadership": [
-        {
-            "role": "Student Secretary",
-            "organization": "SVASTH 2025 - National Conference",
-            "period": "June - September 2025",
-            "description": "Led 15-member team managing ₹1.8L budget for 250+ participant national conference"
-        },
-        {
-            "role": "Coordinator",
-            "organization": "Manipal Health Literacy Unit",
-            "period": "November 2024 - Present",
-            "description": "Organizing 7-8 national/international webinars for diverse healthcare stakeholders"
-        },
-        {
-            "role": "Campus Ambassador",
-            "organization": "Office of International Affairs, MAHE",
-            "period": "July 2025 - Present",
-            "description": "Managing international student programs and cross-cultural initiatives"
-        },
-        {
-            "role": "Student Ambassador",
-            "organization": "Volunteer Service Organization",
-            "period": "2019 - Present",
-            "description": "Progressed from volunteer to campus-level principal representative; 300+ active volunteering hours"
-        }
-    ],
-    
-    # -------------------------------------------------------------------------
-    # LANGUAGES
-    # Displayed on experience page
-    # -------------------------------------------------------------------------
-    "languages": ["English", "Hindi", "Kannada", "Konkani"]
+    # CONTACT CTA
+    "contact_cta": {
+        "title": "Let's Connect",
+        "message": "I'm always open to conversations about healthcare, operations, volunteering, or how we can work together to make care more human-centered.",
+        "button_text": "Get in Touch"
+    }
 }
 
 
 # =============================================================================
 # ROUTE DEFINITIONS
 # =============================================================================
-# 
-# Each route corresponds to a page on the website.
-# All routes pass the portfolio_data dictionary to templates.
 
 @app.route('/')
 def index():
-    """
-    Homepage Route
-    --------------
-    URL: /
-    Template: templates/index.html
-    
-    Displays:
-        - Hero section with intro, stats, and photo placeholder
-        - About section with 3 key expertise cards
-        - Skills grid
-        - Featured national award
-        - Certifications
-        - Quick contact CTA
-    """
+    """Homepage - Pallavi's story and journey"""
     return render_template('index.html', data=portfolio_data)
 
 
 @app.route('/experience')
 def experience():
-    """
-    Experience Page Route
-    ---------------------
-    URL: /experience
-    Template: templates/experience.html
-    
-    Displays:
-        - Work experience timeline
-        - Leadership roles grid
-        - Awards and recognitions
-        - Languages
-    """
+    """Experience page - detailed professional journey"""
     return render_template('experience.html', data=portfolio_data)
 
 
 @app.route('/education')
 def education():
-    """
-    Education Page Route
-    --------------------
-    URL: /education
-    Template: templates/education.html
-    
-    Displays:
-        - Education timeline with degrees
-        - Master's thesis highlight
-        - Certifications
-        - Key coursework
-    """
+    """Education and credentials"""
     return render_template('education.html', data=portfolio_data)
 
 
 @app.route('/contact')
 def contact():
-    """
-    Contact Page Route
-    ------------------
-    URL: /contact
-    Template: templates/contact.html
-    
-    Displays:
-        - Contact information (email, phone, location, LinkedIn)
-        - Contact form (mailto: action)
-        - Areas of collaboration
-        - Resume download CTA
-    """
+    """Contact page"""
     return render_template('contact.html', data=portfolio_data)
 
 
@@ -469,10 +269,7 @@ def contact():
 
 @app.route('/favicon.ico')
 def favicon():
-    """
-    Serve favicon.ico
-    Browsers automatically request this for bookmarks/tabs.
-    """
+    """Serve favicon.ico"""
     return send_from_directory(
         os.path.join(app.root_path, 'static'),
         'favicon.svg',
@@ -482,11 +279,7 @@ def favicon():
 
 @app.route('/apple-touch-icon.png')
 def apple_touch_icon():
-    """
-    Serve apple-touch-icon.png
-    iOS devices request this when users add site to home screen.
-    Falls back to favicon.svg if PNG not available.
-    """
+    """Serve apple-touch-icon.png"""
     return send_from_directory(
         os.path.join(app.root_path, 'static'),
         'favicon.svg',
@@ -513,15 +306,6 @@ def internal_server_error(e):
 # =============================================================================
 # APPLICATION ENTRY POINT
 # =============================================================================
-# 
-# When running directly (not imported as module), start the development server.
-# 
-# WARNING: Do NOT use debug=True in production!
-# For production, use a WSGI server like gunicorn (see Procfile)
 
 if __name__ == '__main__':
-    # Development server configuration
-    # host='0.0.0.0' - Accessible from any network interface
-    # port=5000      - Standard Flask development port
-    # debug=True     - Auto-reload on code changes, detailed error pages
     app.run(debug=True, host='0.0.0.0', port=5000)

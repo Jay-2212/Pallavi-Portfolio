@@ -1,23 +1,11 @@
 {% extends "base.html" %}
-{#
-  HOME PAGE (index.html) - Phase 1: Empathetic Hero
-  ==================================================
-  
-  Redesigned to showcase Pallavi's caring nature and alignment with Praan Health.
-  Lead with humanity, not just credentials.
-#}
 
 {% block content %}
 <!-- ==========================================================================
-     HERO SECTION - Phase 1
-     - Warm, empathetic introduction
-     - Human-centered narrative
-     - Main photo as centerpiece
-     - Stats reframed around impact on people
+     HERO SECTION - Who Pallavi Is
      ========================================================================== -->
 <section class="hero">
     <div class="hero-container">
-        <!-- Left Column: Photo (now featured prominently) -->
         <div class="hero-visual">
             <div class="profile-image-wrapper">
                 <img src="{{ url_for('static', filename=data.hero.main_image) }}" 
@@ -29,80 +17,57 @@
             </div>
         </div>
         
-        <!-- Right Column: Story -->
         <div class="hero-content">
-            <!-- Warm greeting -->
             <span class="hero-greeting">{{ data.hero.greeting }}</span>
-            
-            <!-- Human-centered tagline -->
             <h1 class="hero-title">{{ data.hero.tagline }}</h1>
-            
-            <!-- Story that speaks to the heart -->
             <p class="hero-story">{{ data.hero.story }}</p>
             
-            <!-- Action buttons -->
             <div class="hero-actions">
                 <a href="#my-journey" class="btn btn-primary">
-                    <i class="fas fa-heart"></i> My Journey
+                    <i class="fas fa-road"></i> My Journey
                 </a>
                 <a href="{{ url_for('contact') }}" class="btn btn-outline">
                     Let's Connect <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
             
-            <!-- Human impact stats (not just numbers) -->
             <div class="hero-stats">
+                {% for stat in data.hero.stats %}
                 <div class="stat">
-                    <span class="stat-value">300+</span>
-                    <span class="stat-label">Hours of Volunteering</span>
+                    <span class="stat-value">{{ stat.value }}</span>
+                    <span class="stat-label">{{ stat.label }}</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-value">700+</span>
-                    <span class="stat-label">Volunteers Led</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">6</span>
-                    <span class="stat-label">Years of Service</span>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
     
-    <!-- Scroll indicator -->
     <div class="hero-scroll">
-        <a href="#why-praan" aria-label="Scroll to Why Praan section">
+        <a href="#who-i-am" aria-label="Scroll to Who I Am section">
             <i class="fas fa-chevron-down"></i>
         </a>
     </div>
 </section>
 
 <!-- ==========================================================================
-     WHY PRAAN SECTION - Phase 2 (Coming Next)
-     - Values alignment with Praan Health
-     - Explicit connection between Pallavi's journey and Praan's mission
+     WHO I AM SECTION - Core Qualities
      ========================================================================== -->
-<section class="why-praan" id="why-praan">
+<section class="who-i-am" id="who-i-am">
     <div class="container">
         <div class="section-header">
-            <span class="section-tag">Why Praan Health</span>
-            <h2>{{ data.why_praan.headline }}</h2>
-            <p class="section-quote">{{ data.why_praan.quote }}</p>
+            <span class="section-tag">Who I Am</span>
+            <h2>{{ data.who_i_am.title }}</h2>
+            <p class="section-subtitle">{{ data.who_i_am.subtitle }}</p>
         </div>
         
-        <div class="alignment-grid">
-            {% for item in data.why_praan.connections %}
-            <div class="alignment-card">
-                <div class="alignment-praan">
-                    <i class="fas fa-star"></i>
-                    <h3>{{ item.praan_value }}</h3>
+        <div class="qualities-grid">
+            {% for quality in data.who_i_am.qualities %}
+            <div class="quality-card">
+                <div class="quality-icon">
+                    <i class="fas {{ quality.icon }}"></i>
                 </div>
-                <div class="alignment-arrow">
-                    <i class="fas fa-arrow-down"></i>
-                </div>
-                <div class="alignment-pallavi">
-                    <i class="fas fa-heart"></i>
-                    <p>{{ item.pallavi_story }}</p>
-                </div>
+                <h3>{{ quality.title }}</h3>
+                <p>{{ quality.description }}</p>
             </div>
             {% endfor %}
         </div>
@@ -110,69 +75,91 @@
 </section>
 
 <!-- ==========================================================================
-     VSO JOURNEY SECTION - Phase 3 (Coming Next)
-     - Visual storytelling of her growth
-     - Gallery of VSO photos
-     - Timeline of transformation
+     MY JOURNEY SECTION - The Story Arc
+     VSO → MHA → Hospice
      ========================================================================== -->
-<section class="vso-journey" id="my-journey">
+<section class="my-journey" id="my-journey">
     <div class="container">
         <div class="section-header">
             <span class="section-tag">My Journey</span>
-            <h2>{{ data.vso_journey.title }}</h2>
-            <p class="section-subtitle">{{ data.vso_journey.subtitle }}</p>
+            <h2>{{ data.my_journey.title }}</h2>
+            <p class="section-subtitle">{{ data.my_journey.subtitle }}</p>
         </div>
         
-        <p class="journey-story">{{ data.vso_journey.story }}</p>
-        
-        <!-- Timeline -->
-        <div class="timeline-horizontal">
-            {% for stage in data.vso_journey.stages %}
-            <div class="timeline-stage">
-                <div class="stage-image">
-                    <img src="{{ url_for('static', filename=stage.image) }}" 
-                         alt="{{ stage.role }}"
-                         loading="lazy">
+        <!-- Journey Timeline -->
+        <div class="journey-timeline">
+            {% for section in data.my_journey.sections %}
+            <div class="journey-phase" id="{{ section.id }}">
+                <div class="phase-header">
+                    <span class="phase-badge">{{ section.phase }}</span>
+                    <span class="phase-years">{{ section.years }}</span>
                 </div>
-                <div class="stage-content">
-                    <span class="stage-year">{{ stage.year }}</span>
-                    <h3>{{ stage.role }}</h3>
-                    <p>{{ stage.description }}</p>
+                
+                <div class="phase-content">
+                    <div class="phase-text">
+                        <h3>{{ section.title }}</h3>
+                        <p class="phase-org">{{ section.organization }}</p>
+                        <p class="phase-story">{{ section.story }}</p>
+                        
+                        {% if section.key_moments %}
+                        <div class="key-moments">
+                            <h4>Key Moments</h4>
+                            <ul>
+                                {% for moment in section.key_moments %}
+                                <li><i class="fas fa-star"></i> {{ moment }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        {% if section.achievements %}
+                        <div class="achievements">
+                            {% for achievement in section.achievements %}
+                            <div class="achievement-card">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h4>{{ achievement.title }}</h4>
+                                    <p class="achievement-org">{{ achievement.org }}</p>
+                                    <p>{{ achievement.desc }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if section.images %}
+                    <div class="phase-gallery">
+                        <div class="gallery-grid">
+                            {% for image in section.images %}
+                            <div class="gallery-item">
+                                <img src="{{ url_for('static', filename=image) }}" 
+                                     alt="{{ section.title }}" 
+                                     loading="lazy"
+                                     decoding="async">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
-        </div>
-        
-        <!-- Photo Gallery -->
-        <div class="gallery-section">
-            <h3>Moments That Shaped Me</h3>
-            <div class="photo-grid">
-                {% for image in data.vso_journey.gallery %}
-                <div class="photo-item">
-                    <img src="{{ url_for('static', filename=image) }}" 
-                         alt="VSO Journey - {{ loop.index }}" 
-                         loading="lazy"
-                         decoding="async">
-                </div>
-                {% endfor %}
-            </div>
         </div>
     </div>
 </section>
 
 <!-- ==========================================================================
-     PROFESSIONAL CREDIBILITY SECTION (Retained)
-     - Skills and expertise
-     - Keeps professional credentials
-     - Reframed through lens of care
+     SKILLS SECTION
      ========================================================================== -->
 <section class="skills-section">
     <div class="container">
         <div class="section-header">
             <span class="section-tag">Expertise</span>
-            <h2>How I Deliver Care at Scale</h2>
-            <p class="section-subtitle">Operational excellence in service of human connection</p>
+            <h2>What I Bring</h2>
+            <p class="section-subtitle">The intersection of compassion and competence</p>
         </div>
+        
         <div class="skills-grid">
             {% for category, skills in data.skills.items() %}
             <div class="skill-category">
@@ -189,16 +176,16 @@
 </section>
 
 <!-- ==========================================================================
-     QUICK CONTACT CTA
+     CONTACT CTA
      ========================================================================== -->
-<section class="quick-contact">
+<section class="contact-cta">
     <div class="container">
-        <div class="quick-contact-content">
-            <i class="fas fa-hands-helping"></i>
-            <h2>Let's Build Something Meaningful Together</h2>
-            <p>I'd love to discuss how my experience in healthcare operations and my passion for empathetic care can contribute to Praan Health's mission.</p>
+        <div class="cta-content">
+            <i class="fas fa-heart"></i>
+            <h2>{{ data.contact_cta.title }}</h2>
+            <p>{{ data.contact_cta.message }}</p>
             <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">
-                Start a Conversation <i class="fas fa-arrow-right"></i>
+                {{ data.contact_cta.button_text }} <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
@@ -207,16 +194,11 @@
 
 {% block extra_css %}
 <style>
-/* ==========================================================================
-   PHASE 1: NEW HERO STYLES
-   Emphasis on warmth, humanity, and the main photo
-   ========================================================================== */
-
+/* Hero Section */
 .hero {
     min-height: 100vh;
     padding: 120px 24px 80px;
     background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
-    position: relative;
 }
 
 .hero-container {
@@ -228,24 +210,15 @@
     align-items: center;
 }
 
-/* Visual Side - Photo */
-.hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .profile-image-wrapper {
     position: relative;
-    width: 100%;
     max-width: 450px;
 }
 
 .profile-image {
     width: 100%;
-    height: auto;
     border-radius: 20px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
     position: relative;
     z-index: 2;
 }
@@ -256,206 +229,320 @@
     left: 20px;
     right: -20px;
     bottom: -20px;
-    border: 3px solid var(--secondary, #0d9488);
+    border: 3px solid #0d9488;
     border-radius: 20px;
     z-index: 1;
 }
 
-/* Content Side */
 .hero-greeting {
     display: block;
     font-size: 18px;
-    color: var(--secondary, #0d9488);
+    color: #0d9488;
     font-weight: 500;
     margin-bottom: 12px;
 }
 
 .hero-title {
-    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-family: 'Playfair Display', serif;
     font-size: 48px;
     font-weight: 700;
-    color: var(--primary, #1e3a5f);
+    color: #1e3a5f;
     line-height: 1.2;
     margin-bottom: 24px;
 }
 
 .hero-story {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.9;
-    color: var(--text-secondary, #6b7280);
+    color: #6b7280;
     margin-bottom: 32px;
 }
 
-/* WHY PRAAN SECTION */
-.why-praan {
-    background: var(--bg-primary, #ffffff);
+.hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+}
+
+.stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1e3a5f;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Who I Am Section */
+.who-i-am {
+    background: white;
     padding: 100px 0;
 }
 
-.section-quote {
-    font-size: 20px;
-    font-style: italic;
-    color: var(--text-secondary, #6b7280);
-    max-width: 700px;
-    margin: 24px auto 0;
-}
-
-.alignment-grid {
+.qualities-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    margin-top: 64px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
 }
 
-.alignment-card {
-    background: var(--bg-secondary, #f8fafc);
-    padding: 32px;
-    border-radius: 16px;
+.quality-card {
     text-align: center;
+    padding: 32px 24px;
+    background: #f8fafc;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.alignment-praan {
-    color: var(--primary, #1e3a5f);
+.quality-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.alignment-praan i {
-    font-size: 28px;
-    color: var(--accent, #f59e0b);
-    margin-bottom: 12px;
+.quality-icon {
+    width: 64px;
+    height: 64px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.alignment-praan h3 {
-    font-size: 18px;
-    font-weight: 600;
+.quality-icon i {
+    font-size: 24px;
+    color: #0d9488;
 }
 
-.alignment-arrow {
-    margin: 16px 0;
-    color: var(--secondary, #0d9488);
-}
-
-.alignment-pallavi {
-    color: var(--text-secondary, #6b7280);
-}
-
-.alignment-pallavi i {
+.quality-card h3 {
     font-size: 20px;
-    color: var(--secondary, #0d9488);
+    color: #1e3a5f;
     margin-bottom: 8px;
 }
 
-.alignment-pallavi p {
-    font-size: 15px;
+.quality-card p {
+    font-size: 14px;
+    color: #6b7280;
     line-height: 1.6;
 }
 
-/* VSO JOURNEY SECTION */
-.vso-journey {
+/* My Journey Section */
+.my-journey {
     background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
     padding: 100px 0;
 }
 
-.journey-story {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 64px;
-    font-size: 17px;
-    line-height: 1.8;
-    color: var(--text-secondary, #6b7280);
-}
-
-.timeline-horizontal {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 80px;
-}
-
-.timeline-stage {
-    text-align: center;
-}
-
-.stage-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 16px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.stage-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.stage-year {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--secondary, #0d9488);
-    color: white;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.timeline-stage h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--primary, #1e3a5f);
-    margin-bottom: 8px;
-}
-
-.timeline-stage p {
-    font-size: 14px;
-    color: var(--text-secondary, #6b7280);
-    line-height: 1.5;
-}
-
-/* Photo Gallery */
-.gallery-section {
+.journey-timeline {
     margin-top: 64px;
 }
 
-.gallery-section h3 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 32px;
-    color: var(--primary, #1e3a5f);
+.journey-phase {
+    margin-bottom: 80px;
 }
 
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.phase-header {
+    display: flex;
+    align-items: center;
     gap: 16px;
+    margin-bottom: 32px;
 }
 
-.photo-item {
+.phase-badge {
+    padding: 8px 20px;
+    background: #0d9488;
+    color: white;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.phase-years {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.phase-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.phase-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1e3a5f;
+    margin-bottom: 8px;
+}
+
+.phase-org {
+    font-size: 18px;
+    color: #0d9488;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.phase-story {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+.key-moments h4 {
+    font-size: 16px;
+    color: #1e3a5f;
+    margin-bottom: 12px;
+}
+
+.key-moments ul {
+    list-style: none;
+}
+
+.key-moments li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.key-moments i {
+    color: #f59e0b;
+    margin-top: 4px;
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gallery-item {
     aspect-ratio: 1;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.photo-item img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.photo-item:hover img {
+.gallery-item:hover img {
     transform: scale(1.05);
 }
 
-/* Performance: Smooth image loading */
-.profile-image,
-.stage-image img,
-.photo-item img {
-    will-change: transform;
+/* Achievement Card */
+.achievement-card {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    margin-top: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.achievement-card i {
+    font-size: 32px;
+    color: #f59e0b;
+}
+
+.achievement-card h4 {
+    font-size: 16px;
+    color: #1e3a5f;
+    margin-bottom: 4px;
+}
+
+.achievement-org {
+    font-size: 13px;
+    color: #0d9488;
+    margin-bottom: 8px;
+}
+
+.achievement-card p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Skills */
+.skills-section {
+    background: white;
+    padding: 100px 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.skill-category {
+    padding: 32px;
+    background: #f8fafc;
+    border-radius: 16px;
+}
+
+.skill-category h3 {
+    font-size: 18px;
+    color: #1e3a5f;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #6b7280;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.skill-list i {
+    color: #0d9488;
+}
+
+/* Contact CTA */
+.contact-cta {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0d9488 100%);
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-content i {
+    font-size: 48px;
+    margin-bottom: 24px;
+    opacity: 0.9;
+}
+
+.cta-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 32px;
 }
 
 /* Responsive */
@@ -470,47 +557,33 @@
     }
     
     .profile-image-wrapper {
-        max-width: 350px;
+        margin: 0 auto;
     }
     
     .hero-title {
         font-size: 36px;
     }
     
-    .hero-story {
-        font-size: 16px;
+    .hero-stats {
+        justify-content: center;
     }
     
-    .alignment-grid {
+    .qualities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .phase-content {
         grid-template-columns: 1fr;
     }
     
-    .timeline-horizontal {
+    .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 100px 20px 60px;
-    }
-    
     .hero-title {
         font-size: 28px;
-    }
-    
-    .hero-greeting {
-        font-size: 16px;
-    }
-    
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
     }
     
     .hero-stats {
@@ -518,18 +591,16 @@
         gap: 20px;
     }
     
-    .timeline-horizontal {
+    .qualities-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
     }
     
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
     
-    .section-title {
-        font-size: 28px;
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 }
 </style>

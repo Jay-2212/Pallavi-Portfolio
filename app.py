@@ -7,7 +7,7 @@ to healthcare leadership - highlighting her empathy, initiative, and natural
 leadership that drives her to deliver care at scale.
 
 Pallavi's Journey:
-- VSO (2019-2023): Discovered her calling through 600+ hours of service
+- VSO (2019-2023): Discovered her calling through 300+ hours of service
 - MHA (2024-2026): Learning to deliver care at scale through operations
 - Hospice (2025-Present): Finding purpose in end-of-life dignity
 
@@ -47,7 +47,7 @@ portfolio_data = {
     "hero": {
         "greeting": "Hello, I'm Pallavi",
         "tagline": "I believe healthcare is about human connection",
-        "story": """An occupational therapist at heart, I discovered my purpose through 600+ hours of volunteering 
+        "story": """An occupational therapist at heart, I discovered my purpose through 300+ hours of volunteering 
         with children and communities in need. From teaching in village schools to organizing national volunteer 
         movements, I learned that true care lives in empathy, not just protocols. This journey led me to 
         healthcare operations - because I believe the best way to help more people is to build systems that 
@@ -56,7 +56,7 @@ portfolio_data = {
         every person deserves to be seen, heard, and cared for.""",
         "main_image": "images/pallavi-main.jpg",
         "stats": [
-            {"value": "600+", "label": "Volunteering Hours"},
+            {"value": "300+", "label": "Volunteering Hours"},
             {"value": "2500+", "label": "Volunteers Led"},
             {"value": "6", "label": "Years of Service"}
         ]
@@ -80,7 +80,7 @@ portfolio_data = {
                 for 15+ projects, I grew from volunteer to Student Ambassador - leading India's largest student-run 
                 volunteer organization and mobilizing 2500+ volunteers nationally.""",
                 "key_moments": [
-                    "Started as volunteer, accumulated 600+ service hours",
+                    "Started as volunteer, accumulated 300+ service hours",
                     "Coordinated logistics for 15-20 community projects",
                     "Led operations for campus-level initiatives",
                     "Student Ambassador - principal representative for 2500+ volunteers",
